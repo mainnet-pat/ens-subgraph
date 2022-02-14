@@ -15,7 +15,7 @@ import {
   NameRegistered as NameRegisteredEvent,
   NameRenewed as NameRenewedEvent,
   Transfer as TransferEvent,
-} from './types/BaseRegistrar/BaseRegistrar'
+} from './types/EthBaseRegistrar/BaseRegistrar'
 
 import {
   NameRegistered as ControllerNameRegisteredEvent,
