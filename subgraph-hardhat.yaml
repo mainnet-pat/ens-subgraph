@@ -8,11 +8,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: ENSRegistry
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0x781420e2C228821Eed99403470AC62C9cc4C0Cf7'
+      address: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
       abi: EnsRegistry
-      startBlock: 2944385
+      startBlock: 2
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -36,11 +36,11 @@ dataSources:
           handler: handleNewTTL
   - kind: ethereum/contract
     name: ENSRegistryOld
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0x70a31C9492F33E4d72b4d39187754daC4DdC70f6'
+      address: '0x5FbDB2315678afecb367f032d93F642f64180aa3'
       abi: EnsRegistry
-      startBlock: 2930861
+      startBlock: 1
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -64,11 +64,11 @@ dataSources:
           handler: handleNewTTLOldRegistry
   - kind: ethereum/contract
     name: Resolver
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0xd97CBF2fBbbA47495070af9D22D69d5379F1796c'
+      address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9'
       abi: Resolver
-      startBlock: 2944396
+      startBlock: 5
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -110,11 +110,11 @@ dataSources:
           handler: handleTextChanged
   - kind: ethereum/contract
     name: EthBaseRegistrar
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0x753e33b1A569644a1ab9F9d88D9eBd6A27331918'
+      address: '0x5FC8d32690cc91D4c39d9d3abcBD16989F875707'
       abi: BaseRegistrar
-      startBlock: 3043388
+      startBlock: 6
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -137,11 +137,11 @@ dataSources:
           handler: handleNameTransferred
   - kind: ethereum/contract
     name: EthRegistrarController
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0x6552223b5d64942Db518dc3717df6ce0221DC7C8'
+      address: '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6'
       abi: EthRegistrarController
-      startBlock: 3043601
+      startBlock: 9
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -161,11 +161,11 @@ dataSources:
           handler: handleNameRenewedByController
   - kind: ethereum/contract
     name: BchBaseRegistrar
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0x35d5ACF9dF4aaCe935b5b3145fdD8e2aD6f58E41'
+      address: '0x7a2088a1bFc9d81c55368AE168C2C02570cB814F'
       abi: BaseRegistrar
-      startBlock: 3043656
+      startBlock: 27
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -188,11 +188,11 @@ dataSources:
           handler: handleNameTransferred
   - kind: ethereum/contract
     name: BchRegistrarController
-    network: smartbch-amber
+    network: amber
     source:
-      address: '0x83eB4b6166951164c5259BC1B51a4F38C4607acB'
+      address: '0x67d269191c92Caf3cD7723F116c85e6E9bf55933'
       abi: EthRegistrarController
-      startBlock: 3043665
+      startBlock: 30
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
