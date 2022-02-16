@@ -68,7 +68,7 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
   }
 
   // coinType SMARTBCH
-  log.debug("coin type= {} bigint ={} bool = {}", [event.params.coinType.toHexString(), 
+  log.info("coin type= {} bigint ={} bool = {}", [event.params.coinType.toHexString(), 
     BigInt.fromI32(2147493648).toHexString(), event.params.coinType.equals(BigInt.fromI32(2147493648)) ? "yes" : "no"])
   if (event.params.coinType.equals(BigInt.fromI32(2147493648))) {
     handleAddrChanged(
@@ -83,7 +83,7 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
       )
     )
     let domain = Domain.load(event.params.node.toHexString())
-    log.debug("domain.resolver={} resolver.id={}", [domain!.resolver!, resolver.id])
+    log.info("domain.resolver={} resolver.id={}", [domain!.resolver!, resolver.id])
     if(domain && domain.resolver == resolver.id) {
       domain.resolvedAddress = event.params.newAddress.toHexString()
       domain.save()
