@@ -28,6 +28,12 @@ import {
 import { Bytes, Address, ethereum, BigInt, log } from "@graphprotocol/graph-ts";
 
 export function handleAddrChanged(event: AddrChangedEvent): void {
+  const nodeHash = event.params.node.toHexString()
+  // namehash('resolver.eth')
+  if (nodeHash !== "0xfdd5d5de6dd63db72bbc2d487944ba13bf775b50a80805fe6fcaba9b0fba88f5") {
+    return
+  }
+
   let account = new Account(event.params.a.toHexString())
   account.save()
 
@@ -53,6 +59,9 @@ export function handleAddrChanged(event: AddrChangedEvent): void {
 
 export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
   let resolver = getOrCreateResolver(event.params.node, event.address)
+  resolver.domain = event.params.node.toHexString()
+  resolver.address = event.address
+  resolver.addr = event.params.newAddress.toHexString()
 
   let coinType = event.params.coinType
   if(resolver.coinTypes == null) {
@@ -71,17 +80,6 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
   log.info("coin type= {} bigint ={} bool = {}", [event.params.coinType.toHexString(), 
     BigInt.fromU32(2147493648).toHexString(), event.params.coinType.equals(BigInt.fromU32(2147493648)) ? "yes" : "no"])
   if (event.params.coinType.equals(BigInt.fromU32(2147493648))) {
-    // handleAddrChanged(
-    //   new AddrChangedEvent(
-    //     event.address,
-    //     event.logIndex,
-    //     event.transactionLogIndex,
-    //     event.logType,
-    //     event.block,
-    //     event.transaction,
-    //     [event.parameters[0], new ethereum.EventParam('address', ethereum.Value.fromAddress(event.parameters[2].value.toAddress()))]
-    //   )
-    // )
     let domain = Domain.load(event.params.node.toHexString())
     log.info("domain.resolver={} resolver.id={}", [domain!.resolver!, resolver.id])
     if(domain && domain.resolver == resolver.id) {
