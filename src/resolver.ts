@@ -25,13 +25,13 @@ import {
   TextChanged,
 } from './types/schema'
 
-import { Bytes, Address, ethereum } from "@graphprotocol/graph-ts";
+import { Bytes, Address, ethereum, BigInt } from "@graphprotocol/graph-ts";
 
 export function handleAddrChanged(event: AddrChangedEvent): void {
   let account = new Account(event.params.a.toHexString())
   account.save()
 
-  let resolver = new Resolver(createResolverID(event.params.node, event.address))
+  let resolver = getOrCreateResolver(event.params.node, event.address)
   resolver.domain = event.params.node.toHexString()
   resolver.address = event.address
   resolver.addr = event.params.a.toHexString()
@@ -65,6 +65,21 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
       resolver.coinTypes = coinTypes
       resolver.save()
     }
+  }
+
+  // coinType SMARTBCH
+  if (event.params.coinType.equals(BigInt.fromI32(2147493648))) {
+    handleAddrChanged(
+      new AddrChangedEvent(
+        event.address,
+        event.logIndex,
+        event.transactionLogIndex,
+        event.logType,
+        event.block,
+        event.transaction,
+        [event.parameters[0], new ethereum.EventParam('address', ethereum.Value.fromAddress(event.parameters[2].value.toAddress()))]
+      )
+    )
   }
 
   let resolverEvent = new MulticoinAddrChanged(createEventID(event))
