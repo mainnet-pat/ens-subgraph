@@ -83,7 +83,7 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
       )
     )
     let domain = Domain.load(event.params.node.toHexString())
-    log.critical("domain.resolver={} resolver.id={}", [domain.resolver!, resolver.id])
+    log.critical("domain.resolver={} resolver.id={}", [domain!.resolver!, resolver.id])
     if(domain && domain.resolver == resolver.id) {
       domain.resolvedAddress = event.params.newAddress.toHexString()
       domain.save()
