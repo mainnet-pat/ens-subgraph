@@ -69,8 +69,8 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
 
   // coinType SMARTBCH
   log.info("coin type= {} bigint ={} bool = {}", [event.params.coinType.toHexString(), 
-    BigInt.fromI32(2147493648).toHexString(), event.params.coinType.equals(BigInt.fromI32(2147493648)) ? "yes" : "no"])
-  if (event.params.coinType.equals(BigInt.fromI32(2147493648))) {
+    BigInt.fromU32(2147493648).toHexString(), event.params.coinType.equals(BigInt.fromU32(2147493648)) ? "yes" : "no"])
+  if (event.params.coinType.equals(BigInt.fromU32(2147493648))) {
     handleAddrChanged(
       new AddrChangedEvent(
         event.address,
