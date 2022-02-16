@@ -71,17 +71,17 @@ export function handleMulticoinAddrChanged(event: AddressChangedEvent): void {
   log.info("coin type= {} bigint ={} bool = {}", [event.params.coinType.toHexString(), 
     BigInt.fromU32(2147493648).toHexString(), event.params.coinType.equals(BigInt.fromU32(2147493648)) ? "yes" : "no"])
   if (event.params.coinType.equals(BigInt.fromU32(2147493648))) {
-    handleAddrChanged(
-      new AddrChangedEvent(
-        event.address,
-        event.logIndex,
-        event.transactionLogIndex,
-        event.logType,
-        event.block,
-        event.transaction,
-        [event.parameters[0], new ethereum.EventParam('address', ethereum.Value.fromAddress(event.parameters[2].value.toAddress()))]
-      )
-    )
+    // handleAddrChanged(
+    //   new AddrChangedEvent(
+    //     event.address,
+    //     event.logIndex,
+    //     event.transactionLogIndex,
+    //     event.logType,
+    //     event.block,
+    //     event.transaction,
+    //     [event.parameters[0], new ethereum.EventParam('address', ethereum.Value.fromAddress(event.parameters[2].value.toAddress()))]
+    //   )
+    // )
     let domain = Domain.load(event.params.node.toHexString())
     log.info("domain.resolver={} resolver.id={}", [domain!.resolver!, resolver.id])
     if(domain && domain.resolver == resolver.id) {
